@@ -10,8 +10,8 @@ def read(*rnames):
 version = '0.0.2.dev0'
 
 long_description = '\n'.join([
-    read('README.txt'),
-    read('docs', 'HISTORY.txt')
+    read('README.rst'),
+    read('docs', 'HISTORY.rst')
 ])
 
 tests_require = [
