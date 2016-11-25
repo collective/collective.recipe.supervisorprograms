@@ -5,4 +5,4 @@ install:
   - pip install -r buildout_requirements.txt
   - buildout
 # command to run tests
-script: test
+script: bin/test
