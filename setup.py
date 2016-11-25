@@ -17,7 +17,6 @@ long_description = '\n'.join([
 tests_require = [
     'zc.buildout[test]',
     'zope.testing',
-    'mr.scripty',
 ]
 
 
@@ -52,5 +51,9 @@ setup(
     tests_require=tests_require,
     extras_require={'tests': tests_require},
     test_suite='collective.recipe.supervisorprograms.tests.test_docs.test_suite',
-    entry_points={'zc.buildout': ['default = collective.recipe.supervisorprograms:Recipe']},
+    entry_points={
+        'zc.buildout': [
+            'default = collective.recipe.supervisorprograms:Recipe',
+            'printer = collective.recipe.supervisorprograms:PrinterRecipe',
+        ]},
 )

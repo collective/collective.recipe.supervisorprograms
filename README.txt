@@ -68,11 +68,8 @@ We'll start by creating a buildout that uses the recipe::
     ... parts = fake-supervisor
     ...
     ... [fake-supervisor]
-    ... recipe = mr.scripty
-    ... PROGRAMS = ${supervisor-programs:programs}
-    ... install =
-    ...     ... print self.PROGRAMS
-    ...     ... return []
+    ... recipe = collective.recipe.supervisorprograms:printer
+    ... programs = ${supervisor-programs:programs}
     ...
     ... [supervisor-programs]
     ... recipe = collective.recipe.supervisorprograms
@@ -97,7 +94,7 @@ We'll start by creating a buildout that uses the recipe::
     ...
     ... """)
 
-The `mr.scripty`_ recipe is used to print out the generated ``programs`` option. We don't want
+The ``:printer`` recipe is used to print out the generated ``programs`` option. We don't want
 to install supervisor just to test. In real life you would replace the ``fake-supervisor`` section
 by::
 
@@ -113,14 +110,13 @@ Running the buildout gives us::
 
     >>> print 'start', system(buildout)
     start...
-    10 first bin/first /tmp/first true
+    programs = 10 first bin/first /tmp/first true
     20 second (startsecs=10) bin/second [-a -b --verbose=1] /tmp/second true www-data
-    ...
+    <BLANKLINE>
 
 .. References
 
 .. _`collective.recipe.supervisor`: http://pypi.python.org/pypi/collective.recipe.supervisor
-.. _`mr.scripty`: http://pypi.python.org/pypi/mr.scripty
 
 
 

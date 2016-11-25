@@ -55,3 +55,22 @@ class Recipe(object):
         return ' '.join(parts)
 
     update = install
+
+
+class PrinterRecipe(object):
+    """Recipe to print its options.
+
+    Useful for testing.
+    """
+
+    def __init__(self, buildout, name, options):
+        self.buildout = buildout
+        self.options = options
+
+    def install(self):
+        print '\n'.join(
+            '{} = {}'.format(k, v)
+            for (k, v) in self.options.iteritems()
+            if k != 'recipe'
+        )
+        return ()

@@ -18,8 +18,6 @@ def setUp(test):
     zc.buildout.testing.install_develop('collective.recipe.supervisorprograms', test)
 
     # Install any other recipes that should be available in the tests
-    zc.buildout.testing.install('zope.testing', test)
-    zc.buildout.testing.install('mr.scripty', test)
 
 
 def test_suite():
