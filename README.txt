@@ -1,3 +1,7 @@
+.. image:: https://travis-ci.org/collective/collective.recipe.supervisorprograms.svg?branch=master
+   :target: https://travis-ci.org/collective/collective.recipe.supervisorprograms
+   :alt: Build status
+
 Overview
 ========
 
