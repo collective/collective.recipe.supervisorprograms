@@ -26,6 +26,7 @@ class Recipe(object):
         sections = [(k, self.buildout[k]) for k in section_names]
 
         confs = [self._program_conf_from_section(k, v) for (k, v) in sections]
+        confs.sort(key=self._program_conf_sort_key)
         self.options['programs'] = '\n'.join(self._program_conf_as_str(c) for c in confs)
 
     def install(self):
@@ -53,6 +54,10 @@ class Recipe(object):
         parts = [p.strip() for p in parts]
         parts = [p for p in parts if p]
         return ' '.join(parts)
+
+    def _program_conf_sort_key(self, conf):
+        options_sort_order = ('priority', 'id', 'command', 'directory')
+        return tuple(conf.get(o) for o in options_sort_order)
 
     update = install
 
@@ -94,7 +99,7 @@ class PrinterRecipe(object):
     def install(self):
         print '\n'.join(
             '{} = {}'.format(k, v)
-            for (k, v) in self.options.iteritems()
+            for (k, v) in sorted(self.options.iteritems())
             if k != 'recipe'
         )
         return ()

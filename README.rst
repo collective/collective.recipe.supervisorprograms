@@ -160,8 +160,8 @@ Running the buildout gives us::
     >>> print 'start', system(buildout)
     start...
     programs = 10 foo /path/to/foo /tmp/foo
-    10 foo-2 /path/to/foo-2 /tmp/foo
     10 foo-1 /path/to/foo-1 /tmp/foo
+    10 foo-2 /path/to/foo-2 /tmp/foo
     <BLANKLINE>
 
 
