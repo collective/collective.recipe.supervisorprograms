@@ -57,6 +57,30 @@ class Recipe(object):
     update = install
 
 
+class MultiplierRecipe(object):
+    u"""Buildout recipe to create multiple program sections based on an existing one."""
+
+    def __init__(self, buildout, name, options):
+        program_section_name = options['program-section']
+        count = int(options['count'])
+        program_part = buildout[program_section_name]
+        base_program_command = program_part['command']
+
+        for new_program_number in xrange(1, count + 1):
+            new_program_part = dict(program_part)
+            new_program_part['command'] = '{}-{}'.format(base_program_command, new_program_number)
+            new_program_section_name = '{}-{}-program'.format(
+                program_section_name.replace('-program', ''),
+                new_program_number
+            )
+            buildout[new_program_section_name] = new_program_part
+
+    def install(self):
+        return ()
+
+    update = install
+
+
 class PrinterRecipe(object):
     """Recipe to print its options.
 

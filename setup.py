@@ -54,6 +54,7 @@ setup(
     entry_points={
         'zc.buildout': [
             'default = collective.recipe.supervisorprograms:Recipe',
+            'multiplier = collective.recipe.supervisorprograms:MultiplierRecipe',
             'printer = collective.recipe.supervisorprograms:PrinterRecipe',
         ]},
 )

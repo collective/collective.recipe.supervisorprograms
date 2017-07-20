@@ -4,7 +4,7 @@ Changelog
 0.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added ``:multiplier`` recipe.
 
 
 0.0.1 (2016-11-24)

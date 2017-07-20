@@ -118,6 +118,53 @@ Running the buildout gives us::
     20 second (startsecs=10) bin/second [-a -b --verbose=1] /tmp/second true www-data
     <BLANKLINE>
 
+
+Handling multiple similar programs
+==================================
+
+There are some use cases when you have multiple programs which are very similar. For example,
+it's common to have multiple Zope instances in a cluster setup.
+
+The ``:multiplier`` recipe supports this use case in a limited but useful way. Given a base
+program section it clones it N times, varying only the ``command`` option by appending a
+``-{index}`` suffix. This means you can have a base program with command being ``bin/instance`` and
+multiply it N times generating ``bin/instance-1``, ``bin/instance-2`` and so on.
+
+Here's an example::
+
+    >>> write('buildout.cfg',
+    ... """
+    ... [buildout]
+    ... parts = program-multiplier fake-supervisor
+    ...
+    ... [fake-supervisor]
+    ... recipe = collective.recipe.supervisorprograms:printer
+    ... programs = ${supervisor-programs:programs}
+    ...
+    ... [supervisor-programs]
+    ... recipe = collective.recipe.supervisorprograms
+    ...
+    ... [foo-program]
+    ... priority = 10
+    ... command = /path/to/foo
+    ... directory = /tmp/foo
+    ...
+    ... [program-multiplier]
+    ... recipe = collective.recipe.supervisorprograms:multiplier
+    ... program-section = foo-program
+    ... count = 2
+    ... """)
+
+Running the buildout gives us::
+
+    >>> print 'start', system(buildout)
+    start...
+    programs = 10 foo /path/to/foo /tmp/foo
+    10 foo-2 /path/to/foo-2 /tmp/foo
+    10 foo-1 /path/to/foo-1 /tmp/foo
+    <BLANKLINE>
+
+
 .. References
 
 .. _`collective.recipe.supervisor`: http://pypi.python.org/pypi/collective.recipe.supervisor
