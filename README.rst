@@ -108,7 +108,7 @@ by::
     programs = ${supervisor-programs:programs}
 
 Also, we're using the inheritance feature of buildout (``<= program-base``) to show how to define
-default parameters for all programs. It's use is optional.
+default parameters for all programs. Its use is optional.
 
 Running the buildout gives us::
 
