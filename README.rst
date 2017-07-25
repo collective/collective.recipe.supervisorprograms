@@ -2,6 +2,8 @@
    :target: https://travis-ci.org/collective/collective.recipe.supervisorprograms
    :alt: Build status
 
+.. contents::
+
 Overview
 ========
 
