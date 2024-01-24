@@ -1,2 +1,5 @@
-setuptools==20.1.1
-zc.buildout==2.5.2
+# Keep in sync with versions.cfg
+pip==20.3.4
+setuptools==42.0.2
+wheel===0.37.1
+zc.buildout==2.13.8

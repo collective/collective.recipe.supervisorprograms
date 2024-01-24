@@ -114,7 +114,7 @@ default parameters for all programs. Its use is optional.
 
 Running the buildout gives us::
 
-    >>> print 'start', system(buildout)
+    >>> print('start', system(buildout))
     start...
     programs = 10 first bin/first /tmp/first true
     20 second (startsecs=10) bin/second [-a -b --verbose=1] /tmp/second true www-data
@@ -159,7 +159,7 @@ Here's an example::
 
 Running the buildout gives us::
 
-    >>> print 'start', system(buildout)
+    >>> print('start', system(buildout))
     start...
     programs = 10 foo /path/to/foo /tmp/foo
     10 foo-1 /path/to/foo-1 /tmp/foo

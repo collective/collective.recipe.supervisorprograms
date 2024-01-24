@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 """Recipe environment."""
-
 PROGRAM_OPTIONS = (
     'priority',
     'id',
@@ -41,7 +39,7 @@ class Recipe(object):
         if args and (not args.startswith('[')):
             conf['args'] = '[{}]'.format(args)
 
-        process_opts = [(k, v) for (k, v) in conf.iteritems() if k not in PROGRAM_OPTIONS]
+        process_opts = [(k, v) for (k, v) in conf.items() if k not in PROGRAM_OPTIONS]
         if process_opts:
             conf['process_opts'] = '({})'.format(
                 ' '.join('{}={}'.format(k, v) for (k, v) in process_opts)
@@ -71,7 +69,7 @@ class MultiplierRecipe(object):
         program_part = buildout[program_section_name]
         base_program_command = program_part['command']
 
-        for new_program_number in xrange(1, count + 1):
+        for new_program_number in range(1, count + 1):
             new_program_part = dict(program_part)
             new_program_part['command'] = '{}-{}'.format(base_program_command, new_program_number)
             new_program_section_name = '{}-{}-program'.format(
@@ -97,9 +95,9 @@ class PrinterRecipe(object):
         self.options = options
 
     def install(self):
-        print '\n'.join(
+        print('\n'.join(
             '{} = {}'.format(k, v)
-            for (k, v) in sorted(self.options.iteritems())
+            for (k, v) in sorted(self.options.items())
             if k != 'recipe'
-        )
+        ))
         return ()

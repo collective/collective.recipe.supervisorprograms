@@ -7,6 +7,7 @@ import os
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
+
 version = '0.1.1.dev0'
 
 long_description = '\n'.join([
@@ -32,8 +33,8 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
     ],
     keywords='zc.buildout buildout recipe supervisor',
     author='Rafael Oliveira',
